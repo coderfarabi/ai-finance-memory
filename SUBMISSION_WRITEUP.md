@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-Logging daily financial transactions is crucial for personal financial health, yet most existing solutions require users to navigate complex, field-heavy forms. This creates high friction and discourages consistent logging. AI Finance Memory solves this by enabling users to speak or write transaction logs in their natural conversational language (including mixed languages like Bangla, Banglish, and English) and having a multi-agent system securely extract, validate, and save those transactions.
+Logging daily financial transactions is crucial for personal financial health, yet most existing solutions require users to navigate complex, field-heavy forms. This creates high friction and discourages consistent logging. AI Finance Memory solves this by enabling users to speak or write transaction logs in their natural conversational language and having a multi-agent system securely extract, validate, and save those transactions.
 
 ## Solution Architecture
 

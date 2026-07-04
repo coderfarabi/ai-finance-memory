@@ -1,6 +1,6 @@
 # AI Finance Memory
 
-AI Finance Memory is a secure, multi-language conversational personal finance logger. It enables users to record transaction details in everyday language (English, Bangla, Banglish, or mixed) and automatically structures, validates, and saves them to a database using Google ADK 2.0 multi-agent workflows and the Model Context Protocol (MCP).
+AI Finance Memory is a secure, multi-language conversational personal finance logger. It enables users to record transaction details in everyday language and automatically structures, validates, and saves them to a database using Google ADK 2.0 multi-agent workflows and the Model Context Protocol (MCP).
 
 ## Prerequisites
 

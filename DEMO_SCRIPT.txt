@@ -11,7 +11,7 @@ Think about how many times a day money changes hands — a cup of tea, a borrowe
 [0:20 — WHAT IT IS]
 ─────────────────────────────────────────────────────────
 
-This is a personal finance recording agent built on Google ADK 2.0 under the Agents for Business track. Instead of filling in spreadsheets or finance app forms, you simply tell it what happened — in English, Bangla, Banglish, or whatever mix you prefer — and it records a clean, structured transaction automatically.
+This is a personal finance recording agent built on Google ADK 2.0 under the Agents for Business track. Instead of filling in spreadsheets or finance app forms, you simply tell it what happened — in English — and it records a clean, structured transaction automatically.
 
 ─────────────────────────────────────────────────────────
 [0:40 — SHOW THE BANNER]
