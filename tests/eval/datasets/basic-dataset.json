@@ -1,0 +1,25 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "expense_lunch",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "I paid Rahim 450 taka for lunch yesterday"}]
+      }
+    },
+    {
+      "eval_case_id": "income_salary",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Got 25000 taka salary from Kabir this month"}]
+      }
+    },
+    {
+      "eval_case_id": "partial_info",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Spent some money on groceries"}]
+      }
+    }
+  ]
+}

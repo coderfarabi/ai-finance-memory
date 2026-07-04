@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.example
+.git/
+.gitignore
+tests/
+deployment/
+assets/
+Dockerfile
+Makefile
+*.md
+uv.lock

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "date": "2024-05-14",
+    "type": "Expense",
+    "amount": 450.0,
+    "category": "Food",
+    "details": "Paid Rahim for lunch",
+    "contact": "Rahim",
+    "due_status": "None"
+  },
+  {
+    "id": 2,
+    "date": "2024-05-16",
+    "type": "Expense",
+    "amount": 120.0,
+    "category": "Groceries",
+    "details": "12 eggs",
+    "contact": "None",
+    "due_status": "None"
+  },
+  {
+    "id": 3,
+    "date": "2024-06-03",
+    "type": "Expense",
+    "amount": 11.0,
+    "category": "Food",
+    "details": "egg",
+    "contact": "None",
+    "due_status": "None"
+  },
+  {
+    "id": 4,
+    "date": "2023-10-26",
+    "type": "Expense",
+    "amount": 450.0,
+    "category": "Food",
+    "details": "Lunch",
+    "contact": "Rahim",
+    "due_status": "None"
+  }
+]

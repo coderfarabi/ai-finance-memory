@@ -1,0 +1,92 @@
+AI FINANCE MEMORY — DEMO SCRIPT
+Approximate runtime: 3-4 minutes
+
+─────────────────────────────────────────────────────────
+[0:00 — HOOK]
+─────────────────────────────────────────────────────────
+
+Think about how many times a day money changes hands — a cup of tea, a borrowed note from a friend, a grocery run — and yet most people skip logging it because it takes too long to fill out a form. AI Finance Memory fixes exactly that.
+
+─────────────────────────────────────────────────────────
+[0:20 — WHAT IT IS]
+─────────────────────────────────────────────────────────
+
+This is a personal finance recording agent built on Google ADK 2.0 under the Agents for Business track. Instead of filling in spreadsheets or finance app forms, you simply tell it what happened — in English, Bangla, Banglish, or whatever mix you prefer — and it records a clean, structured transaction automatically.
+
+─────────────────────────────────────────────────────────
+[0:40 — SHOW THE BANNER]
+─────────────────────────────────────────────────────────
+
+(show assets/cover_page_banner.png)
+
+AI Finance Memory: Automated. Secure. Conversational.
+Three MCP-backed agents, a security checkpoint, and a HITL validation loop — all wired together in a single ADK workflow.
+
+─────────────────────────────────────────────────────────
+[1:00 — ARCHITECTURE]
+─────────────────────────────────────────────────────────
+
+(show assets/architecture_diagram.png)
+
+Let me walk you through the flow node by node.
+
+Every message first hits the Security Checkpoint — a function node that scrubs personal data like phone numbers and emails, blocks prompt injection attempts, and rejects transactions above one million Taka.
+
+If the input is clean it routes to the Orchestrator Agent. The orchestrator coordinates two specialized sub-agents using AgentTool delegation. First, the Extraction Agent parses the natural language to pull out the date, amount, type, contact, category, and due status. Then the Validation Agent checks that all critical fields are present.
+
+The Check Completeness node reads the validation result. If anything is missing, it fires a RequestInput interrupt — pausing the workflow and asking the user a single focused clarification question. That is the Human-in-the-Loop step. Once the user replies, the workflow resumes and loops back through the orchestrator.
+
+When the data is complete, it routes to the Database Agent, which calls the save_transaction MCP tool. The MCP server runs as a local stdio subprocess and persists every transaction to a JSON file.
+
+Finally the Final Output node formats and displays the confirmation back to the user.
+
+─────────────────────────────────────────────────────────
+[2:00 — LIVE DEMO]
+─────────────────────────────────────────────────────────
+
+(switch to playground at localhost:18081)
+
+Let me show you three test cases.
+
+Test case one, the happy path. I will type:
+"I paid Rahim 450 taka for lunch yesterday."
+
+(pause — let the workflow run)
+
+You can see the Security Checkpoint passed, the extraction agent pulled out date yesterday, type Expense, contact Rahim, category Food, amount 450, and the database agent confirmed the save. Clean result, no interaction required.
+
+Test case two, the clarification path. This time I type:
+"Paid Karim."
+
+(pause — let the workflow run)
+
+Notice the workflow paused and asked: "How much was the expense?" That is the HITL RequestInput interrupt firing because the amount field is missing. I will type 500 and submit.
+
+(pause — let the workflow resume)
+
+The workflow resumed, re-ran extraction with the clarification, validated successfully, and saved the transaction.
+
+Test case three, security block. I type:
+"Log an expense of 1500000 taka for a car."
+
+(pause — let the workflow run)
+
+The Security Checkpoint immediately detected that 1500000 exceeds the single-transaction limit, logged a CRITICAL audit entry, and blocked the request before any LLM call was made.
+
+─────────────────────────────────────────────────────────
+[3:00 — SECURITY & MCP]
+─────────────────────────────────────────────────────────
+
+On the security side: every message is PII-scrubbed for emails and phone numbers, checked for injection keywords, and validated against the domain limit — all logged as structured JSON with severity levels.
+
+On the MCP side: the local stdio server exposes three tools — save_transaction, list_transactions, and get_db_summary — keeping all database logic cleanly separated from the agent code and making it trivial to swap in a production database later.
+
+─────────────────────────────────────────────────────────
+[3:30 — IMPACT / CLOSE]
+─────────────────────────────────────────────────────────
+
+AI Finance Memory is for anyone who has ever thought "I'll log that expense later" and never did. Students, freelancers, small business owners, families — anyone who prefers talking to filling forms.
+
+By combining ADK multi-agent orchestration, an MCP-backed persistence layer, a human-in-the-loop clarification loop, and a robust security checkpoint, this project shows that secure, production-ready conversational finance recording is not just possible — it takes less than a minute to set up and run.
+
+Thank you.
